@@ -10,6 +10,6 @@ You must archive folder of crypto pro container <keyname.000> to zip, 7z file an
 flask app extract file and convert to pem format with get-cpcert utility and patool.
 
 
-You can use images form dockerhub
+You can use image form dockerhub
 https://hub.docker.com/r/jora450000/get_pem2
 
