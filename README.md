@@ -13,3 +13,5 @@ flask app extract file and convert to pem format with get-cpcert utility and pat
 You can use image form dockerhub
 https://hub.docker.com/r/jora450000/get_pem2
 
+You can easy run docker and enjoy:
+docker run -p 80:5000 jora450000/get_pem2
