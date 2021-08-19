@@ -1,6 +1,4 @@
 from flask import Flask, render_template, request, send_file
-from pyunpack import Archive
-import patoolib
 import os
 app = Flask(__name__)
 
@@ -13,9 +11,16 @@ def uploader_file():
    if request.method == 'POST':
       f = request.files['file']
       passwd = request.form.get('password')
+      passwd_arc = request.form.get('passwordarc')
+      os.system("rm -r ./tmp/*")
       f.save(f"./tmp/{f.filename}")
-      Archive(f"./tmp/{f.filename}").extractall(f"./tmp")
-      #patoolib.list_archive(f"/tmp/{f.filename}")
+      extr_command = f'python3 ./patool/patool extract ./tmp/{f.filename}'
+      if (passwd_arc != ""):
+         extr_command += f' --password {passwd_arc}'
+      extr_command +=  ' --outdir ./tmp'
+      errorlevel = os.system(extr_command)
+      if errorlevel > 0:
+         return f'Неправильный архив или пароль к нему!!!'
       dir_name = os.path.splitext(f.filename)[0]
       print (dir_name)
       out_file = f"./{dir_name}.pem"
