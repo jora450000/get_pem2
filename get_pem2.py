@@ -23,6 +23,9 @@ def uploader_file():
          return f'Неправильный архив или пароль к нему!!!'
       dir_name = os.path.splitext(f.filename)[0]
       print (dir_name)
+      if (os.path.isdir("./tmp/" + dir_name) == False):
+          os.mkdir("./tmp/" + dir_name)
+          os.system( "find -name *.key -exec cp '{}'  ./tmp/" +  dir_name + "  \;")
       out_file = f"./{dir_name}.pem"
       os.system(f"./get-cpcert ./tmp/{dir_name} {passwd}  > {out_file}")
   

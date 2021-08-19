@@ -2,17 +2,14 @@ FROM ubuntu:20.04
 COPY requirements.txt /
 
 RUN apt-get -y update
-RUN apt-get install python3 python3-pip -y
+RUN apt-get install python3 python3-pip -y && apt-get install python3-venv -y && apt-get install zip -y &&  apt-get install p7zip-full -y && apt-get install  unrar -y && apt install git -y
 
-RUN apt-get install python3-venv -y
-RUN apt-get install zip -y 
-RUN apt-get install p7zip-full -y
-RUN apt-get install  unrar -y
-
-RUN pip3 install -r /requirements.txt
+RUN  pip3 install -r /requirements.txt
 
 COPY . /app
 WORKDIR /app
+
+RUN git clone https://github.com/wummel/patool.git
 
 EXPOSE 5000
 

@@ -7,5 +7,4 @@ itsdangerous==2.0.1
 Jinja2==3.0.1
 MarkupSafe==2.0.1
 patool==1.12
-pyunpack==0.2.2
 Werkzeug==2.0.1
