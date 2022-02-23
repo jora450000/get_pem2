@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM docker.io/ubuntu:20.04
 COPY requirements.txt /
 
 RUN apt-get -y update
